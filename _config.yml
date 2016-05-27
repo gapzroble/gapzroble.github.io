@@ -1,0 +1,8 @@
+excerpt_separator: ""
+pygments: true
+markdown: kramdown
+url: http://gapzroble.github.io
+title: Randolph Roble
+tagline: A log of everyday life
+description: My awesome new site
+paginate: 5
