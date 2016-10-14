@@ -3,7 +3,12 @@ layout: default
 title: "Calculator"
 ---
 
-<div class="page">
-  <h1 class="page-title">Calculator</h1>
-  <p class="lead">Buy/sell calculator</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="scripts/calc.js"></script>
+
+<div ng-app="calcApp">
+    <div class="page" ng-controller="CalculatorController as calc">
+      <h1 class="page-title">Calculator</h1>
+      <p class="lead">Buy/sell calculator</p>
+    </div>
 </div>
