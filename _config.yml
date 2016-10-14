@@ -3,6 +3,6 @@ pygments: true
 markdown: kramdown
 url: http://gapzroble.github.io
 title: gapz101
-tagline: A log of everyday life
+tagline: logger
 description: My awesome new site
 paginate: 5
