@@ -1,0 +1,6 @@
+---
+published: true
+title: Test post
+layout: post
+---
+This is only a test. The quick brown fox jumps over the lazy dog.
