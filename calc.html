@@ -3,12 +3,110 @@ layout: default
 title: "Calculator"
 ---
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="scripts/calc.js"></script>
 
 <div ng-app="calcApp">
     <div class="page" ng-controller="CalculatorController as calc">
       <h1 class="page-title">Calculator</h1>
       <p class="lead">Buy/sell calculator</p>
+
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-4">
+                      <div class="page-header">
+                          <h4>Buy</h4>
+                      </div>
+                      <div class="form-horizontal">
+                          <div class="form-group">
+                              <div class="col-xs-6">
+                                  <input type="number" class="form-control" min="0" step="1" placeholder="No. of Shares" required="required">
+                              </div>
+                              <div class="col-xs-6">
+                                  <input type="number" class="form-control text-capitalize" min="0" step="any" placeholder="Buy Price" required="required">
+                              </div>
+                          </div>
+                      </div>
+                      <table class="table">
+                          <tbody>
+                              <tr>
+                                  <td>Gross Buy</td>
+                                  <td class="text-right">0.00</td>
+                              </tr>
+                              <tr>
+                                  <td>Buy Charges</td>
+                                  <td class="text-right">0.00</td>
+                              </tr>
+                              <tr class="danger">
+                                  <th>Net Buy</th>
+                                  <th class="text-right">0.00</th>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="col-lg-4">
+                      <div class="page-header">
+                          <h4>Sell</h4>
+                      </div>
+                      <div class="form-horizontal">
+                          <div class="form-group">
+                              <div class="col-xs-6">
+                                  <input type="number" class="form-control no-of-shares" min="0" step="1" placeholder="No. of Shares" required="required">
+                              </div>
+                              <div class="col-xs-6">
+                                  <input type="number" class="form-control sell-price text-capitalize" min="0" step="any" placeholder="Sell Price" required="required">
+                              </div>
+                          </div>
+                      </div>
+                      <table class="table">
+                          <tbody>
+                              <tr>
+                                  <td>Gross Sell</td>
+                                  <td class="text-right">0.00</td>
+                              </tr>
+                              <tr>
+                                  <td>Sell Charges</td>
+                                  <td class="text-right">0.00</td>
+                              </tr>
+                              <tr class="success">
+                                  <th>Net Sell</th>
+                                  <th class="text-right">0.00</th>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="col-lg-4">
+                      <div class="page-header">
+                          <h4>Profit</h4>
+                      </div>
+                      <table class="table">
+                          <tbody>
+                              <tr class="danger">
+                                  <th>Net Buy</th>
+                                  <th class="text-right">0.00</th>
+                              </tr>
+                              <tr class="success">
+                                  <th>Net Sell</th>
+                                  <th class="text-right">0.00</th>
+                              </tr>
+                              <tr>
+                                  <th colspan="2" class="text-right"><span>(0.00%)</span> <span>0.00</span></th>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+            </div>
+        </div>
     </div>
 </div>
