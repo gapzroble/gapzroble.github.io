@@ -2,6 +2,9 @@
 title: "Calculator"
 ---
 
+<!DOCTYPE html>
+<html lang=en>
+<head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
@@ -15,97 +18,148 @@ title: "Calculator"
 
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="scripts/calc.js"></script>
+</head>
+<body>
 
 <div ng-app="calcApp">
     <div class="page" ng-controller="CalculatorController as calc">
-          <div class="container">
-              <h1 class="page-title">Calculator</h1>
-              <p class="lead">Buy/sell calculator</p>
+        <div class="container">
+            <h1 class="page-title">Calculator</h1>
+            <p class="lead">Buy/sell calculator</p>
 
-              <div class="row">
-                  <div class="col-lg-4">
-                      <div class="page-header">
-                          <h4>Buy</h4>
-                      </div>
-                      <div class="form-horizontal">
-                          <div class="form-group">
-                              <div class="col-xs-6">
-                                  <input type="number" class="form-control" min="0" step="1" placeholder="No. of Shares" required="required">
-                              </div>
-                              <div class="col-xs-6">
-                                  <input type="number" class="form-control text-capitalize" min="0" step="any" placeholder="Buy Price" required="required">
-                              </div>
-                          </div>
-                      </div>
-                      <table class="table">
-                          <tbody>
-                              <tr>
-                                  <td>Gross Buy</td>
-                                  <td class="text-right">0.00</td>
-                              </tr>
-                              <tr>
-                                  <td>Buy Charges</td>
-                                  <td class="text-right">0.00</td>
-                              </tr>
-                              <tr class="danger">
-                                  <th>Net Buy</th>
-                                  <th class="text-right">0.00</th>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <div class="col-lg-4">
-                      <div class="page-header">
-                          <h4>Sell</h4>
-                      </div>
-                      <div class="form-horizontal">
-                          <div class="form-group">
-                              <div class="col-xs-6">
-                                  <input type="number" class="form-control no-of-shares" min="0" step="1" placeholder="No. of Shares" required="required">
-                              </div>
-                              <div class="col-xs-6">
-                                  <input type="number" class="form-control sell-price text-capitalize" min="0" step="any" placeholder="Sell Price" required="required">
-                              </div>
-                          </div>
-                      </div>
-                      <table class="table">
-                          <tbody>
-                              <tr>
-                                  <td>Gross Sell</td>
-                                  <td class="text-right">0.00</td>
-                              </tr>
-                              <tr>
-                                  <td>Sell Charges</td>
-                                  <td class="text-right">0.00</td>
-                              </tr>
-                              <tr class="success">
-                                  <th>Net Sell</th>
-                                  <th class="text-right">0.00</th>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <div class="col-lg-4">
-                      <div class="page-header">
-                          <h4>Profit</h4>
-                      </div>
-                      <table class="table">
-                          <tbody>
-                              <tr class="danger">
-                                  <th>Net Buy</th>
-                                  <th class="text-right">0.00</th>
-                              </tr>
-                              <tr class="success">
-                                  <th>Net Sell</th>
-                                  <th class="text-right">0.00</th>
-                              </tr>
-                              <tr>
-                                  <th colspan="2" class="text-right"><span>(0.00%)</span> <span>0.00</span></th>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-            </div>
-        </div>
-    </div>
-</div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Buy</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="control-label" for="buy-shares">No. of Shares</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="control-label" for="buy-price">Bid Price</label>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <input type="number" ng-model="calc.buy.shares" id="buy-shares" class="form-control" min="0" step="1" placeholder="No. of Shares" required>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="number" ng-model="calc.buy.price" id="buy-price" class="form-control text-capitalize" min="0" step="any" placeholder="Buy Price" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Gross Buy</td>
+                                        <td class="text-right">{{calc.buy.gross}}</td>
+                                    </tr>
+                                     <tr>
+                                         <td>Buy Charges</td>
+                                         <td class="text-right">{{calc.buy.charges}}</td>
+                                     </tr>
+                                     <tr class="text-danger">
+                                         <th>Net Buy</th>
+                                        <th class="text-right">{{calc.buy.net}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- panel body -->
+                    </div><!-- panel -->
+                </div><!-- col-lg -->
+                <div class="col-lg-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <span class="pull-right">
+                                <label>
+                                    <small>Partial</small>
+                                    <input type="checkbox" ng-model="calc.partial">
+                                </label>
+                            </span>
+                            <h4 class="panel-title">Sell</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label class="control-label" for="sell-shares">No. of Shares</label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label class="control-label" for="sell-price">Sell Price</label>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <input type="number" ng-model="calc.sell.shares" id="sell-shares" class="form-control no-of-shares" min="0" step="1" placeholder="No. of Shares" required>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input type="number" ng-model="calc.sell.price" id="sell-price" class="form-control sell-price text-capitalize" min="0" step="any" placeholder="Sell Price" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Gross Sell</td>
+                                        <td class="text-right">{{calc.sell.gross}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sell Charges</td>
+                                        <td class="text-right">{{calc.sell.charges}}</td>
+                                    </tr>
+                                    <tr class="text-success">
+                                        <th>Net Sell</th>
+                                        <th class="text-right">{{calc.sell.net}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- panel body -->
+                    </div><!-- panel -->
+                </div><!-- col-lg -->
+                <div class="col-lg-4">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Profit</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label class="control-label" for="capital">Capital</label>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input ng-model="calc.capital" type="number" id="capital" class="form-control" min="0" step="1" placeholder="Capital" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table">
+                                <tbody>
+                                    <tr class="text-danger">
+                                        <th>Net Buy</th>
+                                        <th class="text-right">{{calc.buy.net}}</th>
+                                    </tr>
+                                    <tr class="text-success">
+                                        <th>Net Sell</th>
+                                        <th class="text-right">{{calc.sell.net}}</th>
+                                    </tr>
+                                    <tr class="text-danger">
+                                        <th colspan="2" class="text-right"><span>({{calc.profit.percent}}%)</span> <span>{{calc.profit.value}}</span></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- panel body -->
+                    </div><!-- panel -->
+                </div><!-- col-lg -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- page -->
+</div><!-- calcapp -->
+
+</body>
+</html>
