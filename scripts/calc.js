@@ -2,7 +2,8 @@ var app = angular.module('calcApp', ['ngStorage'])
 .controller('CalculatorController', function($scope, $localStorage, calc) {
     $scope.step = {
         shares: 1,
-        price: 1
+        price: 1,
+        fixed: 2
     };
     var target = 3; // %
     $scope.data = $localStorage.$default({
@@ -56,7 +57,8 @@ var app = angular.module('calcApp', ['ngStorage'])
             $scope.data.buy.net = result.netAmount;
 
             $scope.data.sell.shares = $scope.data.buy.shares;
-            $scope.data.sell.price = $scope.data.buy.price + ($scope.data.buy.price * (target / 100));
+            var price = $scope.data.buy.price + ($scope.data.buy.price * (target / 100));
+            $scope.data.sell.price = parseFloat(price.toFixed($scope.step.fixed));
             computeSell();
         }
     }
@@ -73,11 +75,6 @@ var app = angular.module('calcApp', ['ngStorage'])
             }
             $scope.data.buy.shares = shares;
             computeBuy();
-
-            $scope.step = {
-                shares: params.boardlot,
-                price: params.fluctuation
-            };
         }
     }
     $scope.$watch('data.capital', computeShares);
@@ -87,6 +84,13 @@ var app = angular.module('calcApp', ['ngStorage'])
         if ($scope.data.capital > 0) {
             computeShares($scope.data.capital);
         }
+
+        var params = calc.format(value);
+        $scope.step = {
+            shares: params.boardlot,
+            price: params.fluctuation,
+            fixed: params.toFixed
+        };
     });
     $scope.$watch(function () {
         return $scope.data.buy.shares;
