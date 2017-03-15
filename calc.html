@@ -151,7 +151,7 @@ title: "Calculator"
                                         <th>Net Sell</th>
                                         <th class="text-right">{{data.sell.net|number:2}}</th>
                                     </tr>
-                                    <tr class="text-danger">
+                                    <tr ng-class="{'text-danger':data.profit.value < 0, 'text-success': data.profit.value > 0}">
                                         <th colspan="2" class="text-right"><span>({{data.profit.percent|number:2}}%)</span> <span>{{data.profit.value|number:2}}</span></th>
                                     </tr>
                                 </tbody>
