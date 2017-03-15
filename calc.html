@@ -17,7 +17,9 @@ title: "Calculator"
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<script src="scripts/calc.js"></script>
+<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+<script src="scripts/calc.js?3"></script>
+<script src="scripts/calculator.js?2"></script>
 </head>
 <body>
 
@@ -45,10 +47,10 @@ title: "Calculator"
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <input type="number" ng-model="calc.buy.shares" id="buy-shares" class="form-control" min="0" step="1" placeholder="No. of Shares" required>
+                                        <input type="number" ng-model="data.buy.shares" id="buy-shares" class="form-control" min="0" placeholder="No. of Shares" required step="{{step.shares}}">
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="number" ng-model="calc.buy.price" id="buy-price" class="form-control text-capitalize" min="0" step="any" placeholder="Buy Price" required>
+                                        <input type="number" ng-model="data.buy.price" id="buy-price" class="form-control text-capitalize" min="0" placeholder="Buy Price" required step="{{step.price}}">
                                     </div>
                                 </div>
                             </div>
@@ -56,15 +58,15 @@ title: "Calculator"
                                 <tbody>
                                     <tr>
                                         <td>Gross Buy</td>
-                                        <td class="text-right">{{calc.buy.gross}}</td>
+                                        <td class="text-right">{{data.buy.gross|number:2}}</td>
                                     </tr>
                                      <tr>
                                          <td>Buy Charges</td>
-                                         <td class="text-right">{{calc.buy.charges}}</td>
+                                         <td class="text-right">{{data.buy.charges|number:2}}</td>
                                      </tr>
                                      <tr class="text-danger">
                                          <th>Net Buy</th>
-                                        <th class="text-right">{{calc.buy.net}}</th>
+                                        <th class="text-right">{{data.buy.net|number:2}}</th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -77,7 +79,7 @@ title: "Calculator"
                             <span class="pull-right">
                                 <label>
                                     <small>Partial</small>
-                                    <input type="checkbox" ng-model="calc.partial">
+                                    <input type="checkbox" ng-model="data.partial">
                                 </label>
                             </span>
                             <h4 class="panel-title">Sell</h4>
@@ -94,10 +96,10 @@ title: "Calculator"
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <input type="number" ng-model="calc.sell.shares" id="sell-shares" class="form-control no-of-shares" min="0" step="1" placeholder="No. of Shares" required>
+                                        <input type="number" ng-model="data.sell.shares" id="sell-shares" class="form-control no-of-shares" min="0" placeholder="No. of Shares" required step="{{step.shares}}">
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="number" ng-model="calc.sell.price" id="sell-price" class="form-control sell-price text-capitalize" min="0" step="any" placeholder="Sell Price" required>
+                                        <input type="number" ng-model="data.sell.price" id="sell-price" class="form-control sell-price text-capitalize" min="0" placeholder="Sell Price" required step="{{step.price}}">
                                     </div>
                                 </div>
                             </div>
@@ -105,15 +107,15 @@ title: "Calculator"
                                 <tbody>
                                     <tr>
                                         <td>Gross Sell</td>
-                                        <td class="text-right">{{calc.sell.gross}}</td>
+                                        <td class="text-right">{{data.sell.gross|number:2}}</td>
                                     </tr>
                                     <tr>
                                         <td>Sell Charges</td>
-                                        <td class="text-right">{{calc.sell.charges}}</td>
+                                        <td class="text-right">{{data.sell.charges|number:2}}</td>
                                     </tr>
                                     <tr class="text-success">
                                         <th>Net Sell</th>
-                                        <th class="text-right">{{calc.sell.net}}</th>
+                                        <th class="text-right">{{data.sell.net|number:2}}</th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -134,7 +136,7 @@ title: "Calculator"
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <input ng-model="calc.capital" type="number" id="capital" class="form-control" min="0" step="1" placeholder="Capital" required>
+                                        <input ng-model="data.capital" type="number" id="capital" class="form-control" min="0" step="1000" placeholder="Capital" required>
                                     </div>
                                 </div>
                             </div>
@@ -142,14 +144,14 @@ title: "Calculator"
                                 <tbody>
                                     <tr class="text-danger">
                                         <th>Net Buy</th>
-                                        <th class="text-right">{{calc.buy.net}}</th>
+                                        <th class="text-right">{{data.buy.net|number:2}}</th>
                                     </tr>
                                     <tr class="text-success">
                                         <th>Net Sell</th>
-                                        <th class="text-right">{{calc.sell.net}}</th>
+                                        <th class="text-right">{{data.sell.net|number:2}}</th>
                                     </tr>
                                     <tr class="text-danger">
-                                        <th colspan="2" class="text-right"><span>({{calc.profit.percent}}%)</span> <span>{{calc.profit.value}}</span></th>
+                                        <th colspan="2" class="text-right"><span>({{data.profit.percent|number:2}}%)</span> <span>{{data.profit.value|number:2}}</span></th>
                                     </tr>
                                 </tbody>
                             </table>
