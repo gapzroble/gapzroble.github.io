@@ -5,7 +5,7 @@ var app = angular.module('calcApp', ['ngStorage'])
         price: 1,
         fixed: 2
     };
-    var target = 0.5; // %
+    var target = 1; // %
     $scope.data = $localStorage.$default({
         capital: 170000,
         buy: {
