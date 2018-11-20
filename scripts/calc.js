@@ -63,7 +63,7 @@ var app = angular.module('calcApp', ['ngStorage'])
                 if ($scope.data.profit.value > 0) {
                     break;
                 }
-                price += $scope.step.price: 1;
+                price += $scope.step.price;
             }
         }
     }
