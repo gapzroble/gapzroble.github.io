@@ -5,7 +5,7 @@ var app = angular.module('calcApp', ['ngStorage'])
         price: 1,
         fixed: 2
     };
-    var target = 1; // %
+    var target = 0.05; // %
     $scope.data = $localStorage.$default({
         capital: 170000,
         buy: {
@@ -57,7 +57,7 @@ var app = angular.module('calcApp', ['ngStorage'])
             $scope.data.buy.net = result.netAmount;
 
             $scope.data.sell.shares = $scope.data.buy.shares;
-            var price = $scope.data.buy.price + ($scope.data.buy.price * (target / 100));
+            var price = $scope.data.buy.price * (1 + (target / 100));
             $scope.data.sell.price = parseFloat(price.toFixed($scope.step.fixed));
             computeSell();
         }
