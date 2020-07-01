@@ -6,3 +6,5 @@ title: gapz101
 tagline: logger
 description: My awesome new site
 paginate: 5
+
+theme: jekyll-theme-slate
