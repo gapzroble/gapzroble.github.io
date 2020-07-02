@@ -3,9 +3,9 @@ excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
 url: http://gapzroble.github.io
-title: gapz101
-tagline: logger
-description: My awesome new site
+title: gapzroble
+tagline: dev
+description: ""
 paginate: 5
 
 theme: jekyll-theme-slate
